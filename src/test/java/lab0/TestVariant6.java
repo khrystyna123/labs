@@ -1,7 +1,6 @@
-package test.lab0;
+package lab0;
 
 
-import lab0.Variant6;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
