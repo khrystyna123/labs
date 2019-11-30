@@ -67,12 +67,12 @@ public class TestBankAccountService {
         bankAccount.addCard(card2);
         bankAccount.addCard(card1);
 
-        SortedSet<Card> sortedCards = bankAccountService.sortCardsByNumber();
-        SortedSet<Card> expectedSortedCards = new TreeSet<>();
-        expectedSortedCards.add(card1);
-        expectedSortedCards.add(card2);
+        SortedSet<Card> actual = bankAccountService.sortCardsByNumber();
+        SortedSet<Card> expected = new TreeSet<>();
+        expected.add(card1);
+        expected.add(card2);
 
-        Assert.assertEquals(expectedSortedCards, sortedCards);
+        Assert.assertEquals(expected, actual, "Cards aren't sorted");
     }
 
     @Test
@@ -80,9 +80,11 @@ public class TestBankAccountService {
         bankAccount.addCard(card3);
         bankAccount.addCard(card4);
 
-        Object[] sortedCards = bankAccountService.sortCardsByCurrency().toArray();
-        Object[] expectedSortedCards = {card3, card4};
-        Assert.assertEquals(expectedSortedCards, sortedCards);
+        SortedSet<Card> actual = bankAccountService.sortCardsByCurrency();
+        SortedSet<Card> expected = new TreeSet<>();
+        expected.add(card3);
+        expected.add(card4);
+        Assert.assertEquals(expected, actual, "Cards aren't sorted");
     }
 
     @Test
@@ -90,9 +92,9 @@ public class TestBankAccountService {
         bankAccount.addCard(card2);
         bankAccount.addCard(card3);
 
-        long expectedCountCardType = 1;
-        long countCardType = bankAccountService.countCardType(Card.CardType.CREDIT);
-        Assert.assertEquals(expectedCountCardType, countCardType);
+        long expected = 1;
+        long actual = bankAccountService.countCardType(Card.CardType.CREDIT);
+        Assert.assertEquals(expected, actual, "Invalid number of cards type");
     }
 
     @Test
@@ -100,6 +102,6 @@ public class TestBankAccountService {
         bankAccount.addCard(card1);
         bankAccount.addCard(card3);
 
-        Assert.assertTrue(bankAccountService.isExistCardByCurrency("USD"));
+        Assert.assertTrue(bankAccountService.isExistCardByCurrency("USD"),"This currency doesn't exist");
     }
 }
