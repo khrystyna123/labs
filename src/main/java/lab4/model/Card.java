@@ -42,11 +42,11 @@ public class Card implements Serializable {
     private long pin;
 
     @NotNull(message = "can't be null")
-    @NotEmpty(message = "can't be empty")
+    //@NotEmpty(message = "can't be empty")
     private CardType type;
 
     @NotNull(message = "can't be null")
-    @NotEmpty(message = "can't be empty")
+    //@NotEmpty(message = "can't be empty")
     private Currency currency;
 
     @NotNull(message = "can't be null")
@@ -109,11 +109,11 @@ public class Card implements Serializable {
         Card card;
 
         public Builder() {
-            Card card = new Card();
+            card = new Card();
         }
 
         public Builder setCardNumber(long cardNumber) {
-            card.cardNumber = cardNumber;
+            this.card.cardNumber = cardNumber;
             return this;
         }
 
